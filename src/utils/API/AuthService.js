@@ -423,7 +423,8 @@ export const courseListApi_New = async ({
     request: {
       filters: {
         // channel: instant?.channelId,
-        channel: 'saasdev-channel',
+        // channel: 'saasdev-channel',
+        channel: 'oblf-channel',
         // program:
         //   userType == 'scp'
         //     ? ['secondchance', 'Second Chance', 'SCP']
@@ -515,7 +516,8 @@ export const contentListApi_Pratham = async ({
       filters: {
         // channel: instant?.channelId,
         // channel: 'kef-channel',
-        channel: 'saasdev-channel',
+        // channel: 'saasdev-channel',
+        channel: 'oblf-channel',
         primaryCategory: ['Learning Resource', 'Practice Question Set'],
         visibility: ['Default', 'Parent'],
       },
@@ -1794,7 +1796,8 @@ export const staticFilterContent = async ({ instantId }) => {
         objectType: 'Collection',
         name: 'Course',
         // channel: instantId,
-        channel: 'saasdev-channel',
+        // channel: 'saasdev-channel',
+        channel: 'oblf-channel',
       },
     },
   };

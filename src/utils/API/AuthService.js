@@ -34,19 +34,31 @@ const getHeaderswithoutTenant = async () => {
 
 export const login = async (params = {}) => {
   try {
-    const result = await post(`${EndUrls.login}`, params, {
+    const url = `${EndUrls.login}`;
+
+    console.log('Calling login API...');
+    console.log(
+      `curl -X POST ${url} \\\n` +
+        `  -H "Content-Type: application/json" \\\n` +
+        `  -H "Accept: application/json" \\\n` +
+        `  -d '${JSON.stringify(params, null, 2)}'`
+    );
+
+    const result = await post(url, params, {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
     });
+
     if (result?.data) {
       return result?.data?.result;
     } else {
       return {};
     }
   } catch (e) {
-    return console.log('e', e);
+    console.error('Login error:', e);
+    return {};
   }
 };
 
@@ -411,7 +423,7 @@ export const courseListApi_New = async ({
     request: {
       filters: {
         // channel: instant?.channelId,
-        channel: 'shikshagraha-channel',
+        channel: 'saasdev-channel',
         // program:
         //   userType == 'scp'
         //     ? ['secondchance', 'Second Chance', 'SCP']
@@ -502,7 +514,8 @@ export const contentListApi_Pratham = async ({
     request: {
       filters: {
         // channel: instant?.channelId,
-        channel: 'kef-channel',
+        // channel: 'kef-channel',
+        channel: 'saasdev-channel',
         primaryCategory: ['Learning Resource', 'Practice Question Set'],
         visibility: ['Default', 'Parent'],
       },
@@ -1780,7 +1793,8 @@ export const staticFilterContent = async ({ instantId }) => {
       objectCategoryDefinition: {
         objectType: 'Collection',
         name: 'Course',
-        channel: instantId,
+        // channel: instantId,
+        channel: 'saasdev-channel',
       },
     },
   };
